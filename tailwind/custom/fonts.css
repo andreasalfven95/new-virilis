@@ -1,0 +1,53 @@
+/**
+ * Custom `@font-face` rules
+ *
+ * These will be added immediately before Tailwind’s `base` layer.
+ */
+@font-face {
+	font-family: "Lato";
+	src: local("Lato-Light"), url("inc/fonts/Lato-Light.woff2") format("woff2"),
+		url("inc/fonts/Lato-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: local("Lato Bold"), local("Lato-Bold"),
+		url("inc/fonts/Lato-Bold.woff2") format("woff2"),
+		url("inc/fonts/Lato-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: local("Lato Black"), local("Lato-Black"),
+		url("inc/fonts/Lato-Black.woff2") format("woff2"),
+		url("inc/fonts/Lato-Black.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato";
+	src: local("Lato Regular"), local("Lato-Regular"),
+		url("inc/fonts/Lato-Regular.woff2") format("woff2"),
+		url("inc/fonts/Lato-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lato Hairline";
+	src: local("Lato-Hairline"),
+		url("inc/fonts/Lato-Hairline.woff2") format("woff2"),
+		url("inc/fonts/Lato-Hairline.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}

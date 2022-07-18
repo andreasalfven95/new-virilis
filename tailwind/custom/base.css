@@ -1,0 +1,42 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `base` layer
+ *
+ * “Add things like base typography styles [or] opinionated global resets.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-base-styles
+ */
+
+/**
+ * This uses the background and foreground colors declared in the
+ * `theme.json` file and is applied both to the frontend and in the block
+ * editor.
+*/
+body {
+	@apply bg-background font-sans text-black;
+}
+
+main {
+	@apply mt-[4.5rem] md:mt-28;
+}
+
+p {
+	@apply mb-3;
+}
+address {
+	@apply mb-3 not-italic;
+}
+
+footer a:hover {
+	@apply underline;
+}
+::selection {
+	@apply bg-primary bg-opacity-50;
+}
+
+img {
+	@apply object-cover;
+}
+
+button {
+	@apply transition-all duration-300 ease-in-out;
+}

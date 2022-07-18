@@ -1,0 +1,301 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `components` layer
+ *
+ * “Add more opinionated, complex classes like buttons, form controls, alerts,
+ * etc; the sort of pre-built components you often see in other frameworks that
+ * you might need to override with utility classes.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-components
+ */
+
+/**
+ * Post title styles
+ *
+ * These will be applied to all headings with an `entry-title` class on the
+ * frontend and to the post heading in the block editor.
+ *
+ * The supplied styles are meant to match the default `h1` classes from
+ * Tailwind Typography.
+ *
+ * The `$post-title-selector` variable is replaced by PostCSS. Please see the
+ * `postcss.config.js` file for details.
+ */
+$post-title-selector {
+	@apply mx-auto mb-6 max-w-content text-3xl font-extrabold text-neutral-900;
+}
+
+/**
+ * Post content styles (via Tailwind Typography)
+ *
+ * These will be applied to all content blocks with an `entry-content` class on
+ * the frontend and within the block editor.
+ *
+ * The `$post-content-selector` variable is replaced by PostCSS. Please see the
+ * `postcss.config.js` file for details.
+ *
+ * For details on how to customize Tailwind Typography via its modifier
+ * classes, please see:
+ *
+ * https://tailwindcss.com/docs/typography-plugin
+ */
+$post-content-selector {
+	@apply prose prose-neutral max-w-none prose-a:text-primary;
+}
+
+/* Content width from the `theme.json` file */
+.entry-content > * {
+	@apply mx-auto max-w-content;
+}
+
+.entry-content > *:not(.alignfull) {
+	@apply px-4;
+}
+
+/* Wide width from the `theme.json` file */
+.entry-content > .alignwide {
+	@apply max-w-wide;
+}
+
+/* Full width */
+.entry-content > .alignfull {
+	@apply max-w-none;
+}
+
+.container {
+	@apply mx-auto;
+}
+
+.is-vertically-aligned-center > *:last-child {
+	@apply mb-0;
+}
+
+.is-vertically-aligned-center > *:first-child {
+	@apply mt-0;
+}
+
+/* .alignfull img {
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	max-width: 100vw;
+	position: relative;
+	right: 50%;
+	width: 100vw;
+} */
+
+/* .wp-block-image.alignfull,
+.wp-block-cover.alignfull,
+.alignfull {
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	max-width: 1000%;
+	width: auto;
+} */
+
+/* LINK UNDERLINE - PRIMARY COLOR */
+@layer components {
+	.link-underline {
+		border-bottom-width: 0;
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(#000, #000);
+		background-size: 0 1.5px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		transition: background-size 0.3s ease-in-out;
+		padding-bottom: 0.4rem;
+	}
+
+	.link-underline-white {
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(#fff, #fff);
+	}
+
+	.link-underline:hover {
+		background-size: 100% 1.5px;
+		background-position: 0 100%;
+	}
+}
+
+article > *:not(.entry-content),
+.entry-content > * {
+	@apply mx-auto max-w-content;
+}
+
+.entry-content,
+.block-editor-block-list__layout {
+	h1 {
+		@apply text-2xl;
+	}
+
+	h2 {
+		@apply text-xl;
+	}
+
+	h3 {
+		@apply text-lg;
+	}
+
+	p,
+	ul,
+	ol {
+		a {
+			@apply text-primary underline;
+
+			&:hover {
+				@apply no-underline;
+			}
+		}
+
+		@apply mb-8;
+	}
+
+	ul:not(.block-editor-block-variation-picker__variations) {
+		li {
+			@apply list-inside list-disc;
+		}
+	}
+
+	ol {
+		li {
+			@apply list-inside list-decimal;
+		}
+	}
+}
+
+.entry-content p {
+	@apply mb-4;
+}
+
+/* BUTTON */
+.button-primary {
+	@apply rounded-3xl bg-primary px-4 py-1 font-bold text-white hover:bg-secondary;
+}
+.button-secondary {
+	@apply rounded-3xl bg-secondary px-4 py-1 font-bold text-white hover:bg-secondary;
+}
+
+.wp-block-button a {
+	@apply bg-primary text-white no-underline transition-all duration-300 ease-in-out hover:bg-secondary;
+}
+
+/* .wp-block-button__link {
+	@apply bg-primary text-white no-underline hover:bg-secondary;
+} */
+
+/* LOGO */
+.custom-logo {
+	@apply h-10 w-auto object-contain object-left transition-all duration-300 md:h-20;
+}
+
+/* FULLSCREEN */
+.fullscreen {
+	@apply h-fullscreenSmallNavbar md:h-fullscreenLargeNavbar;
+}
+
+/* HEADER */
+#primary-menu {
+	.menu-item a {
+		@apply lg:link-underline font-bold;
+	}
+	/* .menu-item a:not(.lang-item a) {
+		@apply lg:link-underline font-bold;
+	} */
+
+	.menu-item-has-children:hover ul {
+		@apply block lg:absolute;
+	}
+
+	.menu-item-has-children:after {
+		@apply relative -top-[2px] ml-[2px] content-[url("https://img.icons8.com/external-those-icons-fill-those-icons/5/000000/external-down-arrows-those-icons-fill-those-icons-6.png")];
+	}
+
+	.menu-item-has-children:after {
+		@apply hidden lg:inline-block;
+	}
+
+	.sub-menu {
+		@apply relative block rounded-md lg:mt-1 lg:hidden lg:border lg:bg-white;
+	}
+
+	.sub-menu a {
+		@apply block min-w-[150px] bg-none text-base font-normal lg:p-4;
+	}
+	.sub-menu a:hover {
+		@apply lg:bg-gray-100;
+	}
+
+	.current-menu-item {
+		@apply text-primary;
+	}
+	.current-menu-item .sub-menu {
+		@apply text-black;
+	}
+}
+
+.lang-item img {
+	@apply inline-block h-4 w-auto !important;
+}
+
+/* PAGINATION */
+.page-numbers.current > span {
+	@apply bg-primary font-bold text-white;
+}
+
+.wp-block-cover__inner-container {
+	@apply container max-w-xl;
+}
+
+.wp-block-cover__inner-container h1 {
+	@apply text-7xl;
+}
+
+/* FOOTER */
+
+/* HAMBURGER MENU */
+#hamburger-wrapper {
+	@apply m-0 flex h-8 w-8 items-center justify-end p-0;
+}
+
+.burger {
+	@apply relative mx-auto;
+}
+
+.burger,
+.burger:before,
+.burger:after {
+	transition: margin 0.1s 0.2s, transform 0.2s;
+	@apply h-[2px] w-4/5 bg-black p-0;
+}
+
+.burger:before,
+.burger:after {
+	@apply absolute top-0 left-0 m-0 w-full content-[""];
+}
+
+.burger:before {
+	@apply -mt-2;
+}
+
+.burger:after {
+	@apply mt-2;
+}
+
+/* STYLES FOR OUR BURGER WHEN THE MENU OPENS */
+.open .burger {
+	@apply rotate-45;
+}
+
+.open .burger,
+.open .burger:before,
+.open .burger:after {
+	transition: margin 0.2s, transform 0.1s 0.2s;
+}
+
+.open .burger:before,
+.open .burger:after {
+	@apply mt-0;
+}
+
+.open .burger:after {
+	@apply -rotate-90;
+}
