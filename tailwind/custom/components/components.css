@@ -39,7 +39,7 @@ $post-title-selector {
  * https://tailwindcss.com/docs/typography-plugin
  */
 $post-content-selector {
-	@apply prose prose-neutral max-w-none prose-a:text-primary prose-strong:text-inherit;
+	@apply prose prose-neutral max-w-none prose-headings:text-inherit prose-lead:text-inherit prose-a:text-primary prose-strong:text-inherit;
 }
 
 /* Content width from the `theme.json` file */
@@ -95,14 +95,11 @@ $post-content-selector {
 /* LINK UNDERLINE - PRIMARY COLOR */
 @layer components {
 	.link-underline {
-		border-bottom-width: 0;
 		background-image: linear-gradient(transparent, transparent),
 			linear-gradient(#000, #000);
 		background-size: 0 1.5px;
 		background-position: 0 100%;
-		background-repeat: no-repeat;
-		transition: background-size 0.3s ease-in-out;
-		padding-bottom: 0.4rem;
+		@apply border-b-0 bg-no-repeat pb-[0.4rem] transition-all duration-300;
 	}
 
 	.link-underline-white {
@@ -175,7 +172,7 @@ article > *:not(.entry-content),
 }
 
 .wp-block-button a {
-	@apply bg-primary text-white no-underline transition-all duration-300 ease-in-out hover:bg-secondary;
+	@apply bg-primary text-white no-underline transition-all duration-300 hover:bg-secondary;
 }
 
 /* .wp-block-button__link {
