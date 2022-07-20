@@ -7,6 +7,8 @@
  * https://esbuild.github.io/
  */
 
+require("./block-extensions/register-block-styles.js");
+
 const wrapper = document.getElementById("hamburger-wrapper");
 
 wrapper.addEventListener("click", () => {

@@ -39,7 +39,7 @@ $post-title-selector {
  * https://tailwindcss.com/docs/typography-plugin
  */
 $post-content-selector {
-	@apply prose prose-neutral max-w-none prose-a:text-primary;
+	@apply prose prose-neutral max-w-none prose-a:text-primary prose-strong:text-inherit;
 }
 
 /* Content width from the `theme.json` file */
@@ -214,14 +214,14 @@ article > *:not(.entry-content),
 	}
 
 	.sub-menu {
-		@apply relative block rounded-md lg:mt-1 lg:hidden lg:border lg:bg-white;
+		@apply relative block lg:mt-1 lg:hidden lg:rounded-lg lg:border lg:border-black lg:bg-background;
 	}
 
 	.sub-menu a {
-		@apply block min-w-[150px] bg-none text-base font-normal lg:p-4;
+		@apply mt-2 block min-w-[150px] bg-none text-base font-normal transition-transform duration-300 lg:mt-0 lg:p-4;
 	}
 	.sub-menu a:hover {
-		@apply lg:bg-gray-100;
+		@apply lg:translate-x-2 lg:underline;
 	}
 
 	.current-menu-item {
