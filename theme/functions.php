@@ -395,24 +395,52 @@ if (function_exists('acf_add_options_page')) {
 }
 
 /* BLOCK PATTERNS */
-
 function my_plugin_register_my_patterns()
 {
 	register_block_pattern(
 		'my-plugin/my-awesome-pattern',
 		array(
-			'title'       => __('Two buttons', 'my-plugin'),
-			'description' => _x('Two horizontal buttons, the left button is primary.', 'Block pattern description', 'my-plugin'),
+			'title'       => __('Two buttons', 'virilis'),
+			'description' => _x('Two horizontal buttons, the left button is primary.', 'Block pattern description', 'virilis'),
 			'content'     => "
-			<div class='flex items-center justify-center w-full gap-2 font-bold text-light'>
-			<button class ='bg-primary rounded-full px-4 py-2 border-primary border-2 hover:bg-transparent'>Primary button</button>
-			<button class ='bg-transparent rounded-full px-4 py-2 border-primary border-2 hover:bg-primary'>Secondary button</button>
-			</div>
+			<!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link\">" . esc_html__('Button One', 'my-plugin') . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button  -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link\">" . esc_html__('Button Two', 'my-plugin') . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->
 			"
-
-			/* <!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button {\"backgroundColor\":\"very-dark-gray\",\"borderRadius\":0} -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link has-background has-very-dark-gray-background-color no-border-radius\">" . esc_html__('Button One', 'my-plugin') . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button {\"textColor\":\"very-dark-gray\",\"borderRadius\":0,\"className\":\"is-style-outline\"} -->\n<div class=\"wp-block-button is-style-outline\"><a class=\"wp-block-button__link has-text-color has-very-dark-gray-color no-border-radius\">" . esc_html__('Button Two', 'my-plugin') . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->" */,
 		)
 	);
 }
-
 add_action('init', 'my_plugin_register_my_patterns');
+
+/* BLOCK STYLES */
+/* Buttons */
+if (function_exists('register_block_style')) {
+	register_block_style(
+		'core/button',
+		[
+			'name'         => 'primary-button-fill',
+			'label'        => __('Primary button with fill', 'virilis'),
+		],
+	);
+	register_block_style(
+		'core/button',
+
+		[
+			'name'         => 'primary-button-outline',
+			'label'        => __('Primary button with outline', 'virilis'),
+		],
+	);
+	register_block_style(
+		'core/button',
+		[
+			'name'         => 'secondary-button-fill',
+			'label'        => __('Secondary button with fill', 'virilis'),
+		],
+	);
+	register_block_style(
+		'core/button',
+
+		[
+			'name'         => 'secondary-button-outline',
+			'label'        => __('Secondary button with outline', 'virilis'),
+		],
+	);
+}

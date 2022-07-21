@@ -164,20 +164,34 @@ article > *:not(.entry-content),
 }
 
 /* BUTTON */
-.button-primary {
-	@apply rounded-3xl bg-primary px-4 py-1 font-bold text-white hover:bg-secondary;
-}
-.button-secondary {
-	@apply rounded-3xl bg-secondary px-4 py-1 font-bold text-white hover:bg-secondary;
-}
-
-.wp-block-button a {
-	@apply bg-primary text-white no-underline transition-all duration-300 hover:bg-secondary;
-}
-
-/* .wp-block-button__link {
-	@apply bg-primary text-white no-underline hover:bg-secondary;
+/* .wp-block-button {
+	@apply rounded-full border-2 p-0 transition-all duration-300;
 } */
+
+.is-style-primary-button-fill,
+.is-style-secondary-button-fill,
+.is-style-primary-button-outline,
+.is-style-secondary-button-outline {
+	> *,
+	a {
+		@apply bg-transparent px-4 py-2 text-base font-bold text-inherit no-underline hover:text-inherit;
+	}
+
+	@apply rounded-full border-2 p-0 transition-all duration-300;
+}
+
+.is-style-primary-button-fill {
+	@apply border-primary bg-primary text-light hover:bg-transparent hover:text-dark;
+}
+.is-style-primary-button-outline {
+	@apply border-primary bg-transparent text-dark hover:bg-primary hover:text-light;
+}
+.is-style-secondary-button-fill {
+	@apply border-secondary bg-secondary text-light hover:bg-transparent hover:text-dark;
+}
+.is-style-secondary-button-outline {
+	@apply border-secondary bg-transparent text-dark hover:bg-secondary hover:text-light;
+}
 
 /* LOGO */
 .custom-logo {

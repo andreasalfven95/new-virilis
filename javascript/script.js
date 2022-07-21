@@ -7,8 +7,6 @@
  * https://esbuild.github.io/
  */
 
-require("./block-extensions/register-block-styles.js");
-
 const wrapper = document.getElementById("hamburger-wrapper");
 
 wrapper.addEventListener("click", () => {
@@ -43,6 +41,7 @@ window.addEventListener("load", function () {
 			logo.classList.remove("h-10");
 		}
 	}); */
+
 let lastKnownScrollPosition = 0;
 let ticking = false;
 let logo = document.querySelector(".custom-logo");
