@@ -67,3 +67,6 @@ document.addEventListener("scroll", function (e) {
 		ticking = true;
 	}
 });
+
+/* BLOCKS .js */
+import "../theme/template-parts/blocks/blocks";

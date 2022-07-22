@@ -31,7 +31,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 		<div class="md:max-w-[33%]">
 			<img class="max-w-[10rem] mb-2" src="<?php echo esc_url($footer_icon['url']); ?>" alt="<?php echo esc_attr($footer_icon['alt']); ?>" />
 			<p>
-				<?php echo esc_html__($footer_text, "virilis") ?>
+				<?php echo esc_html_e($footer_text, "virilis") ?>
 			</p>
 		</div>
 		<div class="">

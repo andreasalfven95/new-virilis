@@ -347,10 +347,19 @@ function my_acf_init_block_types()
 			'name'              => 'testimonial',
 			'title'             => __('Testimonial'),
 			'description'       => __('A custom testimonial block.'),
-			'render_template'   => 'template-parts/blocks/testimonial.php',
-			'category'          => 'formatting',
-			'icon'              => 'admin-comments',
+			'render_template'   => 'template-parts/blocks/faq/testimonial.php',
+			'category'          => 'virilis',
+			'icon'              => 'smiley',
 			'keywords'          => array('testimonial', 'quote'),
+		));
+		acf_register_block_type(array(
+			'name'              => 'faq',
+			'title'             => __('FAQ'),
+			'description'       => __('A custom FAQ block.'),
+			'render_template'   => 'template-parts/blocks/faq/faq.php',
+			'category'          => 'virilis',
+			'icon'              => 'smiley',
+			'keywords'          => array('faq', 'accordion '),
 		));
 	}
 }
