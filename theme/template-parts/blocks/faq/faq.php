@@ -25,46 +25,35 @@ if (!empty($block['align'])) {
 }
 
 // Load values and assing defaults.
-$accordionId = get_field('id') ?: 'Item ID here...';
-$question = get_field('question') ?: 'Your question here...';
-$answer = get_field('answer') ?: 'Answer';
-
+$accordionId = get_field('accordionId') ?: 'Item ID here...';
+$section_name = get_field('faq_section_name') ?: 'Title goes here...';
+$question = the_sub_field('faq_question') ?: 'Your question here...';
+$answer = the_sub_field('faq_answer') ?: 'Answer goes here...';
 ?>
+
+
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item bg-white border border-gray-200">
-            <h2 class="accordion-header mb-0" id="headingOne">
-                <button id="<?php echo $accordionId ?>" class="
-            relative
-            flex
-            items-center
-            justify-between
-            w-full
-            py-4
-            px-5
-            text-base font-bold text-gray-800 text-left
-            bg-white
-            border-0
-            rounded-none
-            transition
-            focus:outline-none
-          " type="button" onclick="accordionActive(this.id)">
-                    <?php echo $question; ?>
-                    <div id="accordion-arrow<?php echo $accordionId ?>" class="ml-2 transition-transform duration-300">⌵</div>
-                </button>
-            </h2>
-            <div id="accordion-answer<?php echo $accordionId ?>" class="accordion-collapse collapse show hidden">
-                <div class="accordion-body py-4 px-5">
-                    <?php echo $answer; ?>
-                </div>
-            </div>
+    <h2 class=""><?php echo $section_name ?></h2>
+    <?php if (have_rows('faq_section')) : ?>
+        <div class="accordion" id="accordionExample" data-accordion data-allow-all-closed="true">
+            <?php while (have_rows('faq_section')) : the_row(); ?>
+                <details data-accordion-item class="accordion-item bg-white overflow-hidden border rounded-md border-gray-300">
+                    <summary id="accordion-question-<?php echo $accordionId ?>" class="accordion-header flex w-full relative mb-0 cursor-pointer items-center justify-between border-0 bg-gray-200 py-4 px-5 text-left text-base font-bold text-dark transition focus:outline-none after:content-['⌵']" onclick="accordionActive(this.id)">
+                        <?php the_sub_field('faq_question') ?>
+                    </summary>
+                    <p id="accordion-answer-<?php echo $accordionId ?>" class="accordion-collapse py-4 px-5 hidden">
+                        <?php the_sub_field("faq_answer"); ?>
+                    </p>
+                </details>
+            <?php endwhile; ?>
         </div>
-    </div>
+    <?php endif; ?>
 </div>
+
 <script>
     function accordionActive(clicked_id) {
         console.log(clicked_id);
-        document.getElementById("accordion-answer" + clicked_id).classList.toggle("hidden")
-        document.getElementById("accordion-arrow" + clicked_id).classList.toggle("-rotate-180")
+        document.getElementById("accordion-answer-" + clicked_id).classList.toggle("hidden")
+        document.getElementById("accordion-question-" + clicked_id).classList.toggle("after:-rotate-180")
     }
 </script>

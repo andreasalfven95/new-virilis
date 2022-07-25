@@ -19,9 +19,6 @@ main {
 	@apply mt-[4.5rem] md:mt-28;
 }
 
-p {
-	@apply mb-3;
-}
 address {
 	@apply mb-3 not-italic;
 }
