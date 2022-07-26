@@ -16,6 +16,9 @@ module.exports = {
 	theme: {
 		// Extend the default Tailwind theme.
 		extend: {
+			transitionProperty: {
+				height: "height",
+			},
 			maxWidth: {
 				xxs: "12rem",
 			},

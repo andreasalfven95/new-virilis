@@ -1,4 +1,4 @@
 /* BLOCKS TO IMPORT TO MAIN JS FILE */
 
 /* FAQ BLOCK */
-import "./faq/faq";
+import "./faq/faq.js";

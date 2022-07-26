@@ -25,35 +25,62 @@ if (!empty($block['align'])) {
 }
 
 // Load values and assing defaults.
-$accordionId = get_field('accordionId') ?: 'Item ID here...';
-$section_name = get_field('faq_section_name') ?: 'Title goes here...';
-$question = the_sub_field('faq_question') ?: 'Your question here...';
-$answer = the_sub_field('faq_answer') ?: 'Answer goes here...';
 ?>
 
+<?php if (have_rows('faq')) : ?>
+    <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+        <?php while (have_rows('faq')) : the_row(); ?>
+            <div class="faq-section mb-4">
+                <?php if (get_sub_field('faq_section_name')) : ?>
+                    <h2><?php the_sub_field('faq_section_name'); ?></h2>
+                <?php endif; ?>
+                <?php if (have_rows('faq_section')) : ?>
+                    <?php while (have_rows('faq_section')) : the_row(); ?>
+                        <details class="accordion-item bg-light overflow-hidden border rounded-md border-gray-300 group">
+                            <summary class="accordion-question flex mb-0 cursor-pointer items-center justify-between bg-gray-200 py-4 px-5 text-base font-bold text-dark after:transition-transform open: after:content-['⌵'] group-open:after:-rotate-180">
+                                <?php the_sub_field("faq_question"); ?>
+                            </summary>
+                            <div class="accordion-answer py-4 px-5">
+                                <?php the_sub_field("faq_answer"); ?>
+                            </div>
+                        </details>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
+        <?php endwhile; ?>
+    </div>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-    <h2 class=""><?php echo $section_name ?></h2>
-    <?php if (have_rows('faq_section')) : ?>
-        <div class="accordion" id="accordionExample" data-accordion data-allow-all-closed="true">
-            <?php while (have_rows('faq_section')) : the_row(); ?>
-                <details data-accordion-item class="accordion-item bg-white overflow-hidden border rounded-md border-gray-300">
-                    <summary id="accordion-question-<?php echo $accordionId ?>" class="accordion-header flex w-full relative mb-0 cursor-pointer items-center justify-between border-0 bg-gray-200 py-4 px-5 text-left text-base font-bold text-dark transition focus:outline-none after:content-['⌵']" onclick="accordionActive(this.id)">
-                        <?php the_sub_field('faq_question') ?>
-                    </summary>
-                    <p id="accordion-answer-<?php echo $accordionId ?>" class="accordion-collapse py-4 px-5 hidden">
-                        <?php the_sub_field("faq_answer"); ?>
-                    </p>
-                </details>
-            <?php endwhile; ?>
-        </div>
-    <?php endif; ?>
-</div>
+    <?php
+    global $schema;
+    $schema = array(
+        '@context'   => "https://schema.org",
+        '@type'      => "FAQPage",
+        'mainEntity' => array()
+    );
+    if (have_rows('faq')) {
+        while (have_rows('faq')) : the_row();
+            if (have_rows('faq_section')) {
+                while (have_rows('faq_section')) : the_row();
+                    $questions = array(
+                        '@type'          => 'Question',
+                        'name'           => get_sub_field('faq_question'),
+                        'acceptedAnswer' => array(
+                            '@type' => "Answer",
+                            'text' => get_sub_field('faq_answer')
+                        )
+                    );
+                    array_push($schema['mainEntity'], $questions);
+                endwhile;
+            }
+        endwhile;
 
-<script>
-    function accordionActive(clicked_id) {
-        console.log(clicked_id);
-        document.getElementById("accordion-answer-" + clicked_id).classList.toggle("hidden")
-        document.getElementById("accordion-question-" + clicked_id).classList.toggle("after:-rotate-180")
+        function virilis_generate_faq_schema($schema)
+        {
+            global $schema;
+            echo '<!-- Auto generated FAQ Structured data by Bakemywp.com --><script type="application/ld+json">' . json_encode($schema) . '</script>';
+        }
+        add_action('wp_footer', 'virilis_generate_faq_schema', 100);
     }
-</script>
+    ?>
+<?php endif; ?>
+<!-- endif have_rows('faq'); -->

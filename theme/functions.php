@@ -140,7 +140,7 @@ add_action('after_setup_theme', 'virilis_content_width', 0);
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function virilis_widgets_init()
+/* function virilis_widgets_init()
 {
 	register_sidebar(
 		array(
@@ -154,7 +154,7 @@ function virilis_widgets_init()
 		)
 	);
 }
-add_action('widgets_init', 'virilis_widgets_init');
+add_action('widgets_init', 'virilis_widgets_init'); */
 
 /**
  * Dequeue styles
@@ -453,3 +453,12 @@ if (function_exists('register_block_style')) {
 		],
 	);
 }
+
+
+/* FAQ SCHEMA */
+/* function virilis_generate_faq_schema($schema)
+{
+	global $schema;
+	echo '<!-- Auto generated FAQ Structured data by Andreas Alfvén --><script type="application/ld+json">' . json_encode($schema) . '</script>';
+}
+add_action('wp_footer', 'virilis_generate_faq_schema', 100); */

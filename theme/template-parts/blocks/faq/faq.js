@@ -1,17 +1,15 @@
-/* const accordionButton = document.getElementById("accordion-button");
-const accordionAnswer = document.getElementById("accordion-answer");
-const accordionArrow = document.getElementById("accordion-arrow"); */
+// Fetch all the details element.
+const details = document.querySelectorAll("details");
 
-/* accordionButton.addEventListener("click", (e) => {
-	e.preventDefault();
-	accordionActive();
-}); */
-
-/* const accordionActive = (clicked_id) => {
-	console.log(clicked_id);
-	accordionButton.classList.toggle("activeAccordion");
-	accordionAnswer.classList.toggle("hidden");
-	accordionArrow.classList.toggle("-rotate-180");
-}; */
-
-console.log("External JS file");
+// Add the onclick listeners.
+details.forEach((targetDetail) => {
+	targetDetail.addEventListener("click", () => {
+		console.log(targetDetail);
+		// Close all the details that are not targetDetail.
+		details.forEach((detail) => {
+			if (detail !== targetDetail) {
+				detail.removeAttribute("open");
+			}
+		});
+	});
+});

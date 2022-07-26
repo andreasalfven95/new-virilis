@@ -25,7 +25,7 @@ $instagram_url = get_field("instagram_url", "option");
 $linkedin_url = get_field("linkedin_url", "option");
 ?>
 
-<footer id="colophon" class="w-full pt-12 px-4 md:px-8 bg-dark text-light">
+<footer id="colophon" class="w-full pt-12 pb-4 mt-8 px-4 md:px-8 bg-dark text-light">
 	<?php do_action('virilis_theme_footer'); ?>
 	<div class="container flex justify-between flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
 		<div class="md:max-w-[33%]">
