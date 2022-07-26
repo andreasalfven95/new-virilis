@@ -453,12 +453,3 @@ if (function_exists('register_block_style')) {
 		],
 	);
 }
-
-
-/* FAQ SCHEMA */
-/* function virilis_generate_faq_schema($schema)
-{
-	global $schema;
-	echo '<!-- Auto generated FAQ Structured data by Andreas Alfvén --><script type="application/ld+json">' . json_encode($schema) . '</script>';
-}
-add_action('wp_footer', 'virilis_generate_faq_schema', 100); */

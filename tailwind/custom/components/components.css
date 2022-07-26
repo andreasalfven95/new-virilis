@@ -219,7 +219,7 @@ article > *:not(.entry-content),
 	}
 
 	.sub-menu {
-		@apply relative block lg:mt-1 lg:hidden lg:rounded-lg lg:border lg:border-black lg:bg-background;
+		@apply relative block lg:mt-1 lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
 	}
 
 	.sub-menu a {
@@ -233,7 +233,7 @@ article > *:not(.entry-content),
 		@apply text-primary;
 	}
 	.current-menu-item .sub-menu {
-		@apply text-black;
+		@apply text-dark;
 	}
 }
 
@@ -243,7 +243,7 @@ article > *:not(.entry-content),
 
 /* PAGINATION */
 .page-numbers.current > span {
-	@apply bg-primary font-bold text-white;
+	@apply bg-primary font-bold text-light;
 }
 
 .wp-block-cover__inner-container {
@@ -255,6 +255,12 @@ article > *:not(.entry-content),
 }
 
 /* FOOTER */
+.icon-container a {
+	@apply inline-block max-w-max rounded-full bg-primary transition-colors duration-300 hover:bg-secondary;
+}
+.icon-container img {
+	@apply max-h-10 p-2;
+}
 
 /* HAMBURGER MENU */
 #hamburger-wrapper {
@@ -269,7 +275,7 @@ article > *:not(.entry-content),
 .burger:before,
 .burger:after {
 	transition: margin 0.1s 0.2s, transform 0.2s;
-	@apply h-[2px] w-4/5 bg-black p-0;
+	@apply h-[2px] w-4/5 bg-dark p-0;
 }
 
 .burger:before,
@@ -312,3 +318,5 @@ article > *:not(.entry-content),
 .activeAccordion#accordionArrow {
 	@apply -rotate-180;
 }
+
+/*  */

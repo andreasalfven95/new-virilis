@@ -10,6 +10,8 @@
 
 // do something with $variable
 
+/* $fb = require get_template_directory() . "/inc/icons/facebook-bw.png"; */
+
 $footer_icon = get_field("footer_icon", "option");
 $footer_text = get_field("footer_text", "option");
 
@@ -25,7 +27,7 @@ $instagram_url = get_field("instagram_url", "option");
 $linkedin_url = get_field("linkedin_url", "option");
 ?>
 
-<footer id="colophon" class="w-full pt-12 pb-4 mt-8 px-4 md:px-8 bg-dark text-light">
+<footer id="colophon" class="w-full pt-12 pb-4 mt-16 px-4 md:px-8 bg-dark text-light">
 	<?php do_action('virilis_theme_footer'); ?>
 	<div class="container flex justify-between flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
 		<div class="md:max-w-[33%]">
@@ -35,7 +37,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 			</p>
 		</div>
 		<div class="">
-			<p>
+			<p class="mb-2">
 				<span class="text-lg uppercase font-black">
 					<?php esc_html_e('Kontakt', 'virilis') ?>
 				</span>
@@ -59,9 +61,9 @@ $linkedin_url = get_field("linkedin_url", "option");
 				<?php echo esc_html__($org_nr, "virilis") ?>
 			</p>
 		</div>
-		<div class="">
-			<p>
-				<span class="text-lg uppercase font-black">
+		<div>
+			<p class="mb-2">
+				<span class="text-lg uppercase font-black mb-4">
 					<?php esc_html_e('Meny', 'virilis') ?>
 				</span>
 			</p>
@@ -73,35 +75,43 @@ $linkedin_url = get_field("linkedin_url", "option");
 						'container_class' => '',
 						'menu_class'      => 'flex flex-col',
 						'theme_location'  => 'virilis-footer-menu',
-						'li_class'        => 'text mb-3',
+						'li_class'        => 'text mb-2',
 						'fallback_cb'     => false,
 					)
 				);
 				?>
 			</nav>
 		</div>
-		<div class="">
-			<p>
-				<span class="text-lg uppercase font-black">
-					<?php esc_html_e('Följ oss', 'virilis') ?>
-				</span>
-			</p>
-			<p>
-				<a href="<?php echo esc_html__($facebook_url, "virilis") ?>" rel="nofollow">
-					Facebook
-				</a>
-			</p>
-			<p>
-				<a href="<?php echo esc_html__($instagram_url, "virilis") ?>" rel="nofollow">
-					Instagram
-				</a>
-			</p>
-			<p>
-				<a href="<?php echo esc_html__($linkedin_url, "virilis") ?>" rel="nofollow">
-					LinkedIn
-				</a>
-			</p>
-		</div>
+		<?php if (
+			$facebook_url || $instagram_url
+			|| $linkedin_url
+		) : ?>
+			<div>
+				<p class="mb-2 text-left md:text-right">
+					<span class="text-lg uppercase font-black">
+						<?php esc_html_e('Följ oss', 'virilis') ?>
+					</span>
+				</p>
+				<div class="flex items-end md:flex-col lg:flex-row gap-2 icon-container">
+					<?php if ($facebook_url) : ?>
+						<h2><?php the_sub_field('faq_section_name'); ?></h2>
+						<a href="<?php echo esc_html__($facebook_url, "virilis") ?>" rel="nofollow">
+							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/facebook.svg" alt="Facebook icon">
+						</a>
+					<?php endif; ?>
+					<?php if ($instagram_url) : ?>
+						<a href="<?php echo esc_html__($instagram_url, "virilis") ?>" rel="nofollow">
+							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/instagram.svg" alt="Instagram icon">
+						</a>
+					<?php endif; ?>
+					<?php if ($linkedin_url) : ?>
+						<a href="<?php echo esc_html__($linkedin_url, "virilis") ?>" rel="nofollow">
+							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/linkedin.svg" alt="Linkedin icon">
+						</a>
+					<?php endif; ?>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 	<div class="container mt-8">
 		<hr class="mb-4">

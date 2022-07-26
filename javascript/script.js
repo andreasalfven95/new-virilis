@@ -6,14 +6,6 @@
  * For esbuild documentation, please see:
  * https://esbuild.github.io/
  */
-
-const accordionActive = (clicked_id) => {
-	document
-		.getElementById("accordion-answer-" + clicked_id)
-		.classList.toggle("hidden");
-	document.getElementById(clicked_id).classList.toggle("after:-rotate-180");
-};
-
 let prevScroll = window.scrollY || document.documentElement.scrollTop;
 let curScroll;
 let direction = 0;

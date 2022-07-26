@@ -10,7 +10,7 @@
 
 ?>
 
-<header id="masthead" class="site-header fixed px-4 min-w-full transition-all duration-300 top-0 z-50 bg-white lg:flex lg:gap-6 lg:justify-between lg:items-center border-b" role="banner">
+<header id="masthead" class="site-header fixed px-4 min-w-full transition-all duration-300 top-0 z-50 bg-light lg:flex lg:gap-6 lg:justify-between lg:items-center border-b" role="banner">
 	<div class="flex gap-6 justify-between items-center h-full
 	">
 		<div id="logo-container" class="flex items-center h-full py-4">
@@ -37,7 +37,7 @@
 			</button>
 		</div>
 	</div>
-	<nav id="primary-nav" class="fixed h-fullscreenSmallNavbar lg:h-auto bg-white text-right lg:text-left lg:bg-transparent left-0 right-0 mt-[1px] transform transition-all duration-300 translate-x-full lg:translate-x-0 lg:static lg:min-h-0 text-xl lg:text-base">
+	<nav id="primary-nav" class="fixed h-fullscreenSmallNavbar lg:h-auto bg-light text-right lg:text-left lg:bg-transparent left-0 right-0 mt-[1px] transform transition-all duration-300 translate-x-full lg:translate-x-0 lg:static lg:min-h-0 text-xl lg:text-base">
 		<?php
 		wp_nav_menu(
 			array(
