@@ -18,7 +18,5 @@ module.exports = {
 		require("postcss-simple-vars")({ variables: selectors }),
 		require("tailwindcss/nesting"),
 		require("tailwindcss"),
-		/* require("autoprefixer"),
-		...(process.env.NODE_ENV === "production" ? { cssnano: {} } : {}), */
 	],
 };
