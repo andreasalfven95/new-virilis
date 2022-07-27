@@ -256,10 +256,10 @@ article > *:not(.entry-content),
 
 /* FOOTER */
 .icon-container a {
-	@apply inline-block max-w-max rounded-full bg-primary transition-colors duration-300 hover:bg-secondary;
+	@apply max-w-max rounded-full bg-primary transition-colors duration-300 hover:bg-secondary;
 }
 .icon-container img {
-	@apply max-h-10 p-2;
+	@apply max-h-8 max-w-[2rem] p-1;
 }
 
 /* HAMBURGER MENU */
@@ -310,13 +310,3 @@ article > *:not(.entry-content),
 .open .burger:after {
 	@apply -rotate-90;
 }
-
-/* ACF ACCORDION BLOCK */
-.activeAccordion#accordiationAnswer {
-	@apply hidden;
-}
-.activeAccordion#accordionArrow {
-	@apply -rotate-180;
-}
-
-/*  */

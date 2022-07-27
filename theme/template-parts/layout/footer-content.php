@@ -9,9 +9,6 @@
  */
 
 // do something with $variable
-
-/* $fb = require get_template_directory() . "/inc/icons/facebook-bw.png"; */
-
 $footer_icon = get_field("footer_icon", "option");
 $footer_text = get_field("footer_text", "option");
 
@@ -29,38 +26,54 @@ $linkedin_url = get_field("linkedin_url", "option");
 
 <footer id="colophon" class="w-full pt-12 pb-4 mt-16 px-4 md:px-8 bg-dark text-light">
 	<?php do_action('virilis_theme_footer'); ?>
-	<div class="container flex justify-between flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
-		<div class="md:max-w-[33%]">
-			<img class="max-w-[10rem] mb-2" src="<?php echo esc_url($footer_icon['url']); ?>" alt="<?php echo esc_attr($footer_icon['alt']); ?>" />
-			<p>
-				<?php echo esc_html_e($footer_text, "virilis") ?>
-			</p>
-		</div>
-		<div class="">
-			<p class="mb-2">
-				<span class="text-lg uppercase font-black">
-					<?php esc_html_e('Kontakt', 'virilis') ?>
-				</span>
-			</p>
-			<address>
-				<?php echo esc_html__($street, "virilis") ?>
-				<br>
-				<?php echo esc_html__($zip_city, "virilis") ?>
-			</address>
-			<p>
-				<a href="mailto:<?php echo esc_html__($email, "virilis") ?>">
-					<?php echo esc_html__($email, "virilis") ?>
-				</a>
-			</p>
-			<p>
-				<a href="tel:<?php echo esc_html__($telephone, "virilis") ?>">
-					<?php echo esc_html__($telephone, "virilis") ?>
-				</a>
-			</p>
-			<p>
-				<?php echo esc_html__($org_nr, "virilis") ?>
-			</p>
-		</div>
+	<div class="max-w-7xl mx-auto flex justify-between flex-col gap-8 md:flex-row">
+		<?php if ($footer_icon || $footer_text) : ?>
+			<div class="md:max-w-[33%]">
+				<?php if ($footer_icon) : ?>
+					<img class="max-w-[10rem] mb-2" src="<?php echo esc_url($footer_icon['url']); ?>" alt="<?php echo esc_attr($footer_icon['alt']); ?>" />
+				<?php endif; ?>
+				<?php if ($footer_text) : ?>
+					<p>
+						<?php echo esc_html_e($footer_text, "virilis") ?>
+					</p>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($street || $zip_city || $email || $telephone || $org_nr) : ?>
+			<div>
+				<p class="mb-2">
+					<span class="text-lg uppercase font-black">
+						<?php esc_html_e('Kontakt', 'virilis') ?>
+					</span>
+				</p>
+				<?php if ($street || $zip_city) : ?>
+					<address>
+						<?php echo esc_html__($street, "virilis") ?>
+						<br>
+						<?php echo esc_html__($zip_city, "virilis") ?>
+					</address>
+				<?php endif; ?>
+				<?php if ($email) : ?>
+					<p>
+						<a href="mailto:<?php echo esc_html__($email, "virilis") ?>">
+							<?php echo esc_html__($email, "virilis") ?>
+						</a>
+					</p>
+				<?php endif; ?>
+				<?php if ($telephone) : ?>
+					<p>
+						<a href="tel:<?php echo esc_html__($telephone, "virilis") ?>">
+							<?php echo esc_html__($telephone, "virilis") ?>
+						</a>
+					</p>
+				<?php endif; ?>
+				<?php if ($org_nr) : ?>
+					<p>
+						<?php echo esc_html__($org_nr, "virilis") ?>
+					</p>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 		<div>
 			<p class="mb-2">
 				<span class="text-lg uppercase font-black mb-4">
@@ -86,26 +99,25 @@ $linkedin_url = get_field("linkedin_url", "option");
 			$facebook_url || $instagram_url
 			|| $linkedin_url
 		) : ?>
-			<div>
-				<p class="mb-2 text-left md:text-right">
+			<div class="min-w-max">
+				<p class="mb-2 text-left lg:text-right">
 					<span class="text-lg uppercase font-black">
 						<?php esc_html_e('Följ oss', 'virilis') ?>
 					</span>
 				</p>
-				<div class="flex items-end md:flex-col lg:flex-row gap-2 icon-container">
+				<div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-2 md:gap-3 lg:gap-2 icon-container">
 					<?php if ($facebook_url) : ?>
-						<h2><?php the_sub_field('faq_section_name'); ?></h2>
-						<a href="<?php echo esc_html__($facebook_url, "virilis") ?>" rel="nofollow">
+						<a href="<?php echo esc_html__($facebook_url, "virilis") ?>" rel="nofollow" target="_blank">
 							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/facebook.svg" alt="Facebook icon">
 						</a>
 					<?php endif; ?>
 					<?php if ($instagram_url) : ?>
-						<a href="<?php echo esc_html__($instagram_url, "virilis") ?>" rel="nofollow">
+						<a href="<?php echo esc_html__($instagram_url, "virilis") ?>" rel="nofollow" target="_blank">
 							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/instagram.svg" alt="Instagram icon">
 						</a>
 					<?php endif; ?>
 					<?php if ($linkedin_url) : ?>
-						<a href="<?php echo esc_html__($linkedin_url, "virilis") ?>" rel="nofollow">
+						<a href="<?php echo esc_html__($linkedin_url, "virilis") ?>" rel="nofollow" target="_blank">
 							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/linkedin.svg" alt="Linkedin icon">
 						</a>
 					<?php endif; ?>
@@ -113,7 +125,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 			</div>
 		<?php endif; ?>
 	</div>
-	<div class="container mt-8">
+	<div class="max-w-7xl mx-auto mt-8">
 		<hr class="mb-4">
 		<p>
 			<small>

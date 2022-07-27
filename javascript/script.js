@@ -24,7 +24,6 @@ window.addEventListener("load", function () {
 		.querySelector("#primary-menu-toggle")
 		.addEventListener("click", function (e) {
 			e.preventDefault();
-			/* main_navigation.classList.toggle("hidden"); */
 			main_navigation.classList.toggle("translate-x-full");
 			body.classList.toggle("overflow-hidden");
 		});
@@ -76,6 +75,8 @@ const checkScroll = () => {
 
 	prevScroll = curScroll;
 };
+window.addEventListener("scroll", checkScroll);
+
 const toggleHeader = (direction, curScroll) => {
 	const header = document.getElementById("masthead");
 
@@ -91,8 +92,6 @@ const toggleHeader = (direction, curScroll) => {
 		prevDirection = direction;
 	}
 };
-
-window.addEventListener("scroll", checkScroll);
 
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
 /* window.onscroll =
