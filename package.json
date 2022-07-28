@@ -29,7 +29,7 @@
 		"watch:browser-sync": "browser-sync start --proxy \"http://virilistheme.local\" --files \"theme\" --no-notify --no-inject-changes",
 		"development:editor": "cross-env _TW_TARGET=editor npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style-editor.css",
 		"development:frontend": "npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style.css",
-		"development:esbuild": "npx esbuild ./javascript/script.js --target=esnext --bundle --outfile=./theme/js/script.min.js",
+		"development:esbuild": "npx esbuild ./javascript/script.js --target=esnext --bundle --outdir=./theme/js",
 		"development": "run-p development:*",
 		"dev": "npm run development",
 		"watch:editor": "npm run development:editor -- --watch",
@@ -48,6 +48,7 @@
 		"production": "run-p production:*",
 		"prod": "npm run production",
 		"zip": "node node_scripts/zip.js virilis",
+		"andreas": "node node_scripts/andreas.js",
 		"bundle": "run-s production zip"
 	}
 }

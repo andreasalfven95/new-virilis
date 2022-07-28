@@ -17,8 +17,3 @@
 .slides.slick-initialized img {
 	@apply block;
 }
-
-/* .slider > .slides .slick-current img,
-.slider > .slides .slick-active img {
-	@apply block;
-} */
