@@ -54,21 +54,21 @@ $linkedin_url = get_field("linkedin_url", "option");
 					</address>
 				<?php endif; ?>
 				<?php if ($email) : ?>
-					<p>
+					<p class="mb-2">
 						<a href="mailto:<?php echo esc_html__($email, "virilis") ?>">
 							<?php echo esc_html__($email, "virilis") ?>
 						</a>
 					</p>
 				<?php endif; ?>
 				<?php if ($telephone) : ?>
-					<p>
+					<p class="mb-2">
 						<a href="tel:<?php echo esc_html__($telephone, "virilis") ?>">
 							<?php echo esc_html__($telephone, "virilis") ?>
 						</a>
 					</p>
 				<?php endif; ?>
 				<?php if ($org_nr) : ?>
-					<p>
+					<p class="mb-2">
 						<?php echo esc_html__($org_nr, "virilis") ?>
 					</p>
 				<?php endif; ?>

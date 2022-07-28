@@ -2,3 +2,4 @@
 
 /* FAQ BLOCK */
 import "./faq/faq.js";
+/* import "./slider/slider.js"; */

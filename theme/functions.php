@@ -314,26 +314,14 @@ function virilis_pagination()
 
 
 /* Advanced Custom Fields */
-/* function acf_init_custom_blocks(){
-	if(function_exists("acf_register_block_type")){
-		acf_register_block_type(array(
-			"name"
-			"title"
-			"description"
-		))
-	}
-} */
-
 /* CUSTOM BLOCKS */
 add_filter('block_categories_all', function ($categories) {
-
 	// Adding a new category.
 	$categories[] = array(
 		'slug'  => 'virilis',
 		'title' => 'Virilis',
 		'icon' => 'smiley'
 	);
-
 	return $categories;
 });
 
@@ -342,15 +330,15 @@ function my_acf_init_block_types()
 {
 	// Check function exists.
 	if (function_exists('acf_register_block_type')) {
-		// register a testimonial block.
+		// register a quote-block block.
 		acf_register_block_type(array(
-			'name'              => 'testimonial',
-			'title'             => __('Testimonial'),
-			'description'       => __('A custom testimonial block.'),
-			'render_template'   => 'template-parts/blocks/faq/testimonial.php',
+			'name'              => 'quote-block',
+			'title'             => __('Quote block'),
+			'description'       => __('A custom quote-block block.'),
+			'render_template'   => 'template-parts/blocks/quote-block/quote-block.php',
 			'category'          => 'virilis',
 			'icon'              => 'smiley',
-			'keywords'          => array('testimonial', 'quote'),
+			'keywords'          => array('testimonial', 'quote', 'quote'),
 		));
 		acf_register_block_type(array(
 			'name'              => 'faq',
@@ -361,8 +349,26 @@ function my_acf_init_block_types()
 			'icon'              => 'smiley',
 			'keywords'          => array('faq', 'accordion '),
 		));
+		acf_register_block_type(array(
+			'name'              => 'slider',
+			'title'             => __('Slider'),
+			'description'       => __('A custom slider block.'),
+			'render_template'   => 'template-parts/blocks/slider/slider.php',
+			'category'          => 'virilis',
+			'icon' 				=> 'smiley',
+			'keywords'          => array('carousel', 'slider', 'slideshow'),
+			'align'				=> 'full',
+			'enqueue_assets' 	=> function () {
+				wp_enqueue_style('slick', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1');
+				wp_enqueue_style('slick-theme', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.8.1');
+				wp_enqueue_script('slick', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true);
+
+				wp_enqueue_script('block-slider', get_template_directory_uri() . '/template-parts/blocks/slider/slider.js', array(), '1.0.0', true);
+			},
+		));
 	}
 }
+
 if (function_exists('acf_add_options_page')) {
 	acf_add_options_page(array(
 		'page_title' 	=> 'Website settings',

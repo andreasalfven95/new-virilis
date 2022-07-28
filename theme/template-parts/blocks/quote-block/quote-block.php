@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Testimonial Block Template.
+ * Quote Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -10,13 +10,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'testimonial-' . $block['id'];
+$id = 'quote-block-' . $block['id'];
 if (!empty($block['anchor'])) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'testimonial not-prose';
+$className = 'quote-block';
 if (!empty($block['className'])) {
     $className .= ' ' . $block['className'];
 }
@@ -25,7 +25,7 @@ if (!empty($block['align'])) {
 }
 
 // Load values and assing defaults.
-$text = get_field('testimonial') ?: 'Your testimonial here...';
+$text = get_field('quote') ?: 'Your quote-block here...';
 $author = get_field('author') ?: 'Author name';
 $role = get_field('role') ?: 'Author role';
 $image = get_field('image') ?: 295;
@@ -34,14 +34,15 @@ $text_color = get_field('text_color');
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-    <blockquote class="testimonial-blockquote">
-        <span class="testimonial-text"><?php echo $text; ?></span>
-        <span class="testimonial-author"><?php echo $author; ?></span>
-        <span class="testimonial-role"><?php echo $role; ?></span>
-    </blockquote>
-    <div class="testimonial-image">
-        <?php echo wp_get_attachment_image($image, 'full'); ?>
-    </div>
+    <figure>
+        <blockquote class="quote-block-blockquote">
+            <p class="quote-block-text"><?php echo $text; ?></p>
+        </blockquote>
+        <figcaption class="quote-block-author"><?php echo $author; ?>, <cite class="quote-block-role"><?php echo $role; ?></cite></figcaption>
+        <div class="quote-block-image">
+            <?php echo wp_get_attachment_image($image, 'full'); ?>
+        </div>
+    </figure>
     <style type="text/css">
         #<?php echo $id; ?> {
             background: <?php echo $background_color; ?>;

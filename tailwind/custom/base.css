@@ -20,7 +20,7 @@ main {
 }
 
 address {
-	@apply mb-3 not-italic;
+	@apply mb-4 not-italic;
 }
 
 footer a:hover {
