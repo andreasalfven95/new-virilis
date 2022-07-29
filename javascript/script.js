@@ -107,6 +107,3 @@ const toggleHeader = (direction, curScroll) => {
 			logo.classList.remove("h-10");
 		}
 	}); */
-
-/* BLOCKS .js */
-import "../theme/template-parts/blocks/blocks";

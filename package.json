@@ -29,12 +29,12 @@
 		"watch:browser-sync": "browser-sync start --proxy \"http://virilistheme.local\" --files \"theme\" --no-notify --no-inject-changes",
 		"development:editor": "cross-env _TW_TARGET=editor npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style-editor.css",
 		"development:frontend": "npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style.css",
-		"development:esbuild": "npx esbuild ./javascript/script.js --target=esnext --bundle --outdir=./theme/js",
+		"development:esbuild": "node node_scripts/build.js",
 		"development": "run-p development:*",
 		"dev": "npm run development",
 		"watch:editor": "npm run development:editor -- --watch",
 		"watch:frontend": "npm run development:frontend -- --watch",
-		"watch:esbuild": "npm run development:esbuild -- --watch",
+		"watch:esbuild": "node node_scripts/build.js --watch",
 		"watch": "run-p watch:*",
 		"lint:eslint": "npx eslint theme/",
 		"lint-fix:eslint": "npx eslint theme/ --fix",
@@ -44,11 +44,10 @@
 		"lint-fix": "run-p lint-fix:*",
 		"production:editor": "cross-env NODE_ENV=production npm run development:editor -- --minify",
 		"production:frontend": "cross-env NODE_ENV=production npm run development:frontend -- --minify",
-		"production:esbuild": "npm run development:esbuild -- --minify",
+		"production:esbuild": "node node_scripts/build.js --minify",
 		"production": "run-p production:*",
 		"prod": "npm run production",
 		"zip": "node node_scripts/zip.js virilis",
-		"andreas": "node node_scripts/andreas.js",
 		"bundle": "run-s production zip"
 	}
 }
