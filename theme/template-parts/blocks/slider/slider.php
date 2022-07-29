@@ -16,7 +16,7 @@ if (!empty($block['anchor'])) {
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'slider not-prose';
+$className = 'slider';
 if (!empty($block['className'])) {
     $className .= ' ' . $block['className'];
 }
@@ -28,13 +28,19 @@ if ($is_preview) {
 }
 
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> relative">
     <?php if (have_rows('slides')) : ?>
-        <div class="slides">
+        <div class="absolute w-full mx-auto flex justify-center items-center h-full">
+            <div class="relative h-full z-10 text-light flex flex-col justify-center p-4 max-w-[960px] mx-auto md:pr-52 lg:pr-96">
+                <!-- FIX THE CONDITIONAL DISPLAY OF WYSIWYG FIELD HERE -->
+                <?php if (the_field('slider_text')) : the_field('slider_text') ?><?php endif; ?>
+            </div>
+        </div>
+        <div class="slides absolute">
             <?php while (have_rows('slides')) : the_row();
                 $image = get_sub_field('image');
             ?>
-                <div>
+                <div class="not-prose brightness-50">
                     <?php echo wp_get_attachment_image($image['id'], 'full'); ?>
                 </div>
             <?php endwhile; ?>

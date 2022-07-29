@@ -3,7 +3,7 @@
 }
 .slider .slides img {
 	/* @apply h-fullscreenSmallNavbar w-screen lg:h-fullscreenLargeNavbar; */
-	@apply h-[30vh] w-screen md:h-[50vh];
+	@apply h-[30vh] max-h-min w-screen md:h-[50vh];
 }
 .slider.is-admin:before {
 	@apply /* z-index: 1; */ absolute top-0 left-0 right-0
