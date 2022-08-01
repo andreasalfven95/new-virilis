@@ -28,19 +28,30 @@ if ($is_preview) {
 }
 
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> relative">
+<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> relative flex items-center">
     <?php if (have_rows('slides')) : ?>
-        <div class="absolute w-full mx-auto flex justify-center items-center h-full">
-            <div class="relative h-full z-10 text-light flex flex-col justify-center p-4 max-w-[960px] mx-auto md:pr-52 lg:pr-96">
-                <!-- FIX THE CONDITIONAL DISPLAY OF WYSIWYG FIELD HERE -->
-                <?php if (the_field('slider_text')) : the_field('slider_text') ?><?php endif; ?>
+        <?php if (get_field('slider_text') || have_rows('cta_buttons')) : ?>
+            <div class="prose-p:mb-0 prose-headings:mt-0 prose-h1:mb-0 px-4 py-8 h-full w-full text-light flex flex-col justify-center max-w-content mx-auto">
+
+                <?php the_field('slider_text'); ?>
+                <?php while (have_rows('cta_buttons')) : the_row();
+                    $cta_button = get_sub_field('cta_button');
+                ?>
+                    <div class="cta-buttons">
+
+                    </div>
+                <?php endwhile; ?>
             </div>
-        </div>
-        <div class="slides absolute">
+        <?php endif; ?>
+        <div class="slides -z-10
+        <?php if (get_field("slider_text")) : ?>
+            brightness-50
+            <?php endif; ?>
+            ">
             <?php while (have_rows('slides')) : the_row();
                 $image = get_sub_field('image');
             ?>
-                <div class="not-prose brightness-50">
+                <div class="not-prose">
                     <?php echo wp_get_attachment_image($image['id'], 'full'); ?>
                 </div>
             <?php endwhile; ?>
