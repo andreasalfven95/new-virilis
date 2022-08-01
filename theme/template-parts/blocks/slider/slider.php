@@ -9,6 +9,21 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+$allowed_blocks = [/* 'core/heading', 'core/social-links', */'core/paragraph', 'core/button'];
+$template = [
+    /* [
+        'core/heading',
+        [
+            'level' => 6,
+            'content' => '<strong>Title</strong>',
+            'align' => 'center',
+            'className' => 'card-heading'
+        ],], */
+    /* ['core/paragraph', ['placeholder' => 'Description', 'align' => 'center']], */
+    ['core/buttons'],
+    /* ['core/social-links', ['align' => 'center']], */
+];
+
 // Create id attribute allowing for custom "anchor" value.
 $id = 'slider-' . $block['id'];
 if (!empty($block['anchor'])) {
@@ -41,6 +56,7 @@ if ($is_preview) {
 
                     </div>
                 <?php endwhile; ?>
+                <InnerBlocks template="<?php echo esc_attr(wp_json_encode($template)); ?>" allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>" templateLock="false" />
             </div>
         <?php endif; ?>
         <div class="slides -z-10

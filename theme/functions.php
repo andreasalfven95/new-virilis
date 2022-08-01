@@ -362,6 +362,7 @@ function my_acf_init_block_types()
 			'icon' 				=> 'smiley',
 			'keywords'          => array('carousel', 'slider', 'slideshow'),
 			'align'				=> 'full',
+			'supports' => array('jsx' => true,),
 			'enqueue_assets' 	=> function () {
 				wp_enqueue_style('slick', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1',);
 				wp_enqueue_style('slick-theme', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.8.1');
