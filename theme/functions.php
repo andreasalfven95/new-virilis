@@ -374,6 +374,16 @@ function my_acf_init_block_types()
 				}
 			},
 		));
+		acf_register_block_type(array(
+			'name'              => 'team',
+			'title'             => __('Team'),
+			'description'       => __('A custom team block.'),
+			'render_template'   => 'template-parts/blocks/team/team.php',
+			'category'          => 'virilis',
+			'icon' 				=> 'smiley',
+			'keywords'          => array('contact', 'team'),
+			'supports' => array('jsx' => true,),
+		));
 	}
 }
 

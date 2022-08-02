@@ -10,16 +10,16 @@
  */
 
 /* INNER BLOCKS */
-$allowed_blocks = ['core/buttons'];
+$allowed_blocks = ['core/buttons', 'core/button'];
 $template = [
     [
         'core/buttons',
-        ['className' => 'cta-buttons mt-4',]
     ]
 ];
 
 //Block variables
 $has_buttons = get_field('has_buttons');
+$image_overlay = get_field('image_overlay');
 
 // Create id attribute allowing for custom "anchor" value.
 $id = 'slider-' . $block['id'];
@@ -46,14 +46,20 @@ if ($is_preview) {
             <div class="prose-p:mb-0 prose-headings:mt-0 prose-h1:mb-0 z-10 px-4 py-8 h-full w-full text-light flex flex-col justify-center max-w-content mx-auto">
                 <?php the_field('slider_text'); ?>
                 <?php if ($has_buttons) : ?>
-                    <InnerBlocks allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>" template="<?php echo esc_attr(wp_json_encode($template)); ?>" />
+                    <div class="cta-buttons mt-4">
+                        <InnerBlocks allowedBlocks="<?php echo esc_attr(wp_json_encode($allowed_blocks)); ?>" template="<?php echo esc_attr(wp_json_encode($template)); ?>" />
+                    </div>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
         <div class="slides
-        <?php if (get_field("slider_text") || $has_buttons) : ?>
-            brightness-50
-            <?php endif; ?>
+        <?php if ($image_overlay == "dark") {
+            echo "brightness-50";
+        } elseif ($image_overlay == "light") {
+            echo "brightness-150";
+        } else {
+            "";
+        } ?>
             ">
             <?php while (have_rows('slides')) : the_row();
                 $image = get_sub_field('image');
