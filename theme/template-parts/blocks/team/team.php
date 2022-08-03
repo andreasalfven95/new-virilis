@@ -45,7 +45,7 @@ if ($is_preview) {
         </div>
     <?php endif; ?>
     <?php if (have_rows('team')) : ?>
-        <div class="team-members not-prose grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="team-members not-prose grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             <?php while (have_rows('team')) : the_row();
                 $team_image = get_sub_field('team_image');
                 $team_name = get_sub_field('team_name');
@@ -59,7 +59,7 @@ if ($is_preview) {
                     <?php endif; ?>
                     <?php if ($team_name) : ?>
                         <div class="team_name mt-4">
-                            <span class="font-bold text-primary">
+                            <span class="font-bold text-primary text-lg">
                                 <?php the_sub_field("team_name"); ?>
                             </span>
                         </div>
@@ -71,70 +71,32 @@ if ($is_preview) {
                             </span>
                         </div>
                     <?php endif; ?>
-                    <?php if (have_rows('social_links')) : ?>
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-                        <div class="social">
-                            <ul class="fa-ul social-links">
-                                <?php while (have_rows('social_links')) : the_row(); ?>
-                                    <?php $icon = "";
-                                    $link = "";
-                                    $open_blank = false; ?>
+                    <?php if (have_rows('connect_links')) : ?>
+                        <div class="social mt-2 flex items-center justify-center w-full">
+                            <ul class="social-links flex gap-2 flex-wrap items-center justify-center sm:max-w-[80%]">
+                                <?php while (have_rows('connect_links')) : the_row();
+                                    $connect_channel = get_sub_field('connect_channel');
+                                    $connect_url = get_sub_field('connect_url');
+                                    $attribute = "";
+                                    $folder = "";
 
-                                    <?php
-                                    if (get_sub_field('email')) {
-                                        $icon = "fa-envelope-o";
-                                        $link = "mailto:" . get_sub_field('email');
-                                        $open_blank = false;
-                                    } elseif (get_sub_field('phone')) {
-                                        $icon = "fa-phone";
-                                        $link = "tel:" . get_sub_field('phone');
-                                        $open_blank = false;
-                                    } elseif (get_sub_field('facebook')) {
-                                        $icon = "fa-facebook";
-                                        $link = get_sub_field('facebook');
-                                        $open_blank = true;
-                                    } elseif (get_sub_field('twitter')) {
-                                        $icon = "fa-twitter";
-                                        $link = get_sub_field('twitter');
-                                        $open_blank = true;
-                                    } elseif (get_sub_field('linkedin')) {
-                                        $icon = "fa-linkedin";
-                                        $link = get_sub_field('linkedin');
-                                        $open_blank = true;
-                                    } elseif (get_sub_field('instagram')) {
-                                        $icon = "fa-instagram";
-                                        $link = get_sub_field('instagram');
-                                        $open_blank = true;
-                                    } elseif (get_sub_field('github')) {
-                                        $icon = "fa-github";
-                                        $link = get_sub_field('github');
-                                        $open_blank = true;
+                                    if (($connect_channel ==  "envelope") || ($connect_channel == "phone")) {
+                                        $folder = "solid";
+                                    } else {
+                                        $folder = "brands";
                                     }
-                                    ?>
-                                    <li><a <?php if ($open_blank) echo 'target:"_blank"' ?> href="<?php echo $link; ?>"><i class="fa <?php echo $icon ?>" aria-hidden="true"></i></a></li>
 
-
-                                    <!-- <?php if (get_sub_field('email')) : ?>
-                                        <li><a href="mailto:<?php echo the_sub_field('email'); ?>"><i class="fa fa-email"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('phone')) : ?>
-                                        <li><a href="tel:<?php echo the_sub_field('phone'); ?>"><i class="fa fa-phone"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('facebook')) : ?>
-                                        <li class="fa-li"><a href="<?php echo the_sub_field('facebook'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('twitter')) : ?>
-                                        <li><a href="<?php echo the_sub_field('twitter'); ?>"><i class="fa fa-twitter"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('linkedin')) : ?>
-                                        <li><a href="<?php echo the_sub_field('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('instagram')) : ?>
-                                        <li><a href="<?php echo the_sub_field('instagram'); ?>"><i class="fa fa-instagram"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if (get_sub_field('github')) : ?>
-                                        <li><a href="<?php echo the_sub_field('github'); ?>"><i class="fa fa-github"></i></a></li>
-                                    <?php endif; ?> -->
+                                    if ($connect_channel == "envelope") {
+                                        $attribute = "mailto:";
+                                    } elseif ($connect_channel == "phone") {
+                                        $attribute = "tel:";
+                                    }
+                                ?>
+                                    <li>
+                                        <a class="bg-primary hover:bg-secondary rounded-full p-2 flex items-center justify-center hover:scale-110 transition w-8 h-8" rel="nofollow" target="_blank" href="<?php if ($attribute) echo $attribute ?><?php echo $connect_url; ?>">
+                                            <img src="<?php echo get_template_directory_uri(); ?>/inc/icons/font-awesome/<?php echo $folder ?>/<?php echo $connect_channel ?>.svg" alt="<?php echo $connect_channel ?> icon" class="invert"></img>
+                                        </a>
+                                    </li>
                                 <?php endwhile; ?>
                             </ul>
                         </div>

@@ -95,33 +95,38 @@ $linkedin_url = get_field("linkedin_url", "option");
 				?>
 			</nav>
 		</div>
-		<?php if (
-			$facebook_url || $instagram_url
-			|| $linkedin_url
-		) : ?>
-			<div class="min-w-max">
-				<p class="mb-2 text-left lg:text-right">
+		<?php if (have_rows('connect_links', 'options')) : ?>
+			<div class="md:max-w-[25%]">
+				<p class="mb-2 text-left md:text-right min-w-max">
 					<span class="text-lg uppercase font-black">
 						<?php esc_html_e('Följ oss', 'virilis') ?>
 					</span>
 				</p>
-				<div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center gap-2 md:gap-3 lg:gap-2 icon-container">
-					<?php if ($facebook_url) : ?>
-						<a href="<?php echo esc_html__($facebook_url, "virilis") ?>" rel="nofollow" target="_blank">
-							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/facebook.svg" alt="Facebook icon">
-						</a>
-					<?php endif; ?>
-					<?php if ($instagram_url) : ?>
-						<a href="<?php echo esc_html__($instagram_url, "virilis") ?>" rel="nofollow" target="_blank">
-							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/instagram.svg" alt="Instagram icon">
-						</a>
-					<?php endif; ?>
-					<?php if ($linkedin_url) : ?>
-						<a href="<?php echo esc_html__($linkedin_url, "virilis") ?>" rel="nofollow" target="_blank">
-							<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/linkedin.svg" alt="Linkedin icon">
-						</a>
-					<?php endif; ?>
-				</div>
+				<ul class="icon-container flex flex-wrap md:justify-end gap-2">
+					<?php while (have_rows('connect_links', "option")) : the_row();
+						$connect_channel = get_sub_field('connect_channel', "option");
+						$connect_url = get_sub_field('connect_url', "option");
+						$folder = "";
+
+						if (($connect_channel ==  "envelope") || ($connect_channel == "phone")) {
+							$folder = "solid";
+						} else {
+							$folder = "brands";
+						}
+
+						if ($connect_channel == "envelope") {
+							$attribute = "mailto:";
+						} elseif ($connect_channel == "phone") {
+							$attribute = "tel:";
+						}
+					?>
+						<li>
+							<a class="bg-primary hover:bg-secondary rounded-full p-2 flex items-center justify-center transition w-8 h-8" rel="nofollow" target="_blank" href="<?php if ($attribute) echo $attribute ?><?php echo $connect_url; ?>">
+								<img src="<?php echo get_template_directory_uri(); ?>/inc/icons/font-awesome/<?php echo $folder ?>/<?php echo $connect_channel ?>.svg" alt="<?php echo $connect_channel ?> icon" class="invert"></img>
+							</a>
+						</li>
+					<?php endwhile; ?>
+				</ul>
 			</div>
 		<?php endif; ?>
 	</div>
