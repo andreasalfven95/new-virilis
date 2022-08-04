@@ -54,7 +54,7 @@ if ($is_preview) {
                 <div class="team-member mt-8 flex flex-col items-center">
                     <?php if ($team_image) : ?>
                         <div class="team_image">
-                            <?php echo wp_get_attachment_image($team_image['id'], 'thumbnail', "", ["class" => "rounded-full"]); ?>
+                            <?php echo wp_get_attachment_image($team_image['id'], 'thumbnail', "", ["class" => "rounded-full w-[150px] h-[150px]"]); ?>
                         </div>
                     <?php endif; ?>
                     <?php if ($team_name) : ?>

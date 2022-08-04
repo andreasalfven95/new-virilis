@@ -384,6 +384,15 @@ function my_acf_init_block_types()
 			'keywords'          => array('contact', 'team'),
 			'supports' => array('jsx' => true,),
 		));
+		acf_register_block_type(array(
+			'name'              => 'timeline',
+			'title'             => __('Timeline'),
+			'description'       => __('A custom timeline block.'),
+			'render_template'   => 'template-parts/blocks/timeline/timeline.php',
+			'category'          => 'virilis',
+			'icon' 				=> 'smiley',
+			'keywords'          => array('history', 'timeline'),
+		));
 	}
 }
 

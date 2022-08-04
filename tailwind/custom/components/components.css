@@ -92,14 +92,14 @@ $post-content-selector {
 	width: auto;
 } */
 
-/* LINK UNDERLINE - PRIMARY COLOR */
+/* LINK UNDERLINE */
 @layer components {
 	.link-underline {
 		background-image: linear-gradient(transparent, transparent),
 			linear-gradient(#000, #000);
-		background-size: 0 1.5px;
-		background-position: 0 100%;
-		@apply border-b-0 bg-no-repeat pb-[0.4rem] transition-all duration-300;
+		background-size: 0 0.1em;
+		background-position: 0 80%;
+		@apply border-b-0 bg-no-repeat transition-all duration-300;
 	}
 
 	.link-underline-white {
@@ -108,8 +108,8 @@ $post-content-selector {
 	}
 
 	.link-underline:hover {
-		background-size: 100% 1.5px;
-		background-position: 0 100%;
+		background-size: 100% 0.1em;
+		background-position: 0 80%;
 	}
 }
 
@@ -201,8 +201,11 @@ article > *:not(.entry-content),
 
 /* HEADER */
 #primary-menu {
+	.menu-item:not(.sub-menu .menu-item) {
+		@apply py-4 font-bold;
+	}
 	.menu-item a {
-		@apply lg:link-underline font-bold;
+		@apply lg:link-underline py-4;
 	}
 	/* .menu-item a:not(.lang-item a) {
 		@apply lg:link-underline font-bold;
@@ -213,15 +216,19 @@ article > *:not(.entry-content),
 	}
 
 	.menu-item-has-children:after {
-		@apply relative -top-[2px] ml-[2px] content-[url("https://img.icons8.com/external-those-icons-fill-those-icons/5/000000/external-down-arrows-those-icons-fill-those-icons-6.png")];
+		@apply relative -top-[2px] ml-[4px] content-[url("https://img.icons8.com/external-those-icons-fill-those-icons/5/000000/external-down-arrows-those-icons-fill-those-icons-6.png")];
 	}
 
 	.menu-item-has-children:after {
 		@apply hidden lg:inline-block;
 	}
 
+	.menu-item-has-children {
+		@apply relative;
+	}
+
 	.sub-menu {
-		@apply relative block lg:mt-1 lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
+		@apply absolute top-12 left-0 block lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
 	}
 
 	.sub-menu a {
