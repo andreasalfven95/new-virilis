@@ -231,6 +231,13 @@ article > *:not(.entry-content),
 		@apply block lg:absolute lg:top-12 lg:left-0 lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
 	}
 
+	/* .sub-menu li {
+		@apply p-0;
+	} */
+	#menu-header-menu > li:last-child {
+		@apply pb-4;
+	}
+
 	.sub-menu a {
 		@apply mt-2 block bg-none text-base font-normal transition-transform duration-300 sm:min-w-[150px] lg:mt-0 lg:p-4;
 	}

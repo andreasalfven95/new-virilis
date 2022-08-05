@@ -42,7 +42,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 		<?php if ($street || $zip_city || $email || $telephone || $org_nr) : ?>
 			<div>
 				<p class="mb-2">
-					<span class="text-lg uppercase font-black">
+					<span class="text-xl uppercase font-bold">
 						<?php esc_html_e('Kontakt', 'virilis') ?>
 					</span>
 				</p>
@@ -76,7 +76,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 		<?php endif; ?>
 		<div>
 			<p class="mb-2">
-				<span class="text-lg uppercase font-black mb-4">
+				<span class="text-xl uppercase font-bold mb-4">
 					<?php esc_html_e('Meny', 'virilis') ?>
 				</span>
 			</p>
@@ -98,7 +98,7 @@ $linkedin_url = get_field("linkedin_url", "option");
 		<?php if (have_rows('connect_links', 'options')) : ?>
 			<div class="md:max-w-[25%]">
 				<p class="mb-2 text-left md:text-right min-w-max">
-					<span class="text-lg uppercase font-black">
+					<span class="text-xl uppercase font-bold">
 						<?php esc_html_e('Följ oss', 'virilis') ?>
 					</span>
 				</p>

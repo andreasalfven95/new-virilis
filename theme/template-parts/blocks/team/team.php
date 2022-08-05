@@ -45,7 +45,7 @@ if ($is_preview) {
         </div>
     <?php endif; ?>
     <?php if (have_rows('team')) : ?>
-        <div class="team-members not-prose grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div class="team-members text-center not-prose grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             <?php while (have_rows('team')) : the_row();
                 $team_image = get_sub_field('team_image');
                 $team_name = get_sub_field('team_name');

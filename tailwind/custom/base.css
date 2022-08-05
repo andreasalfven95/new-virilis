@@ -14,7 +14,7 @@
 
 /* BREAK WORDS FOR REALLY SMALL SCREENS */
 body {
-	@apply break-words bg-background font-sans text-black sm:break-normal;
+	@apply break-words bg-background font-sans text-dark sm:break-normal;
 }
 
 main {

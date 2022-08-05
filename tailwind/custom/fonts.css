@@ -3,14 +3,14 @@
  *
  * These will be added immediately before Tailwind’s `base` layer.
  */
-@font-face {
+/* @font-face {
 	font-family: "Lato";
 	src: local("Lato-Light"), url("inc/fonts/Lato-Light.woff2") format("woff2"),
 		url("inc/fonts/Lato-Light.woff") format("woff");
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
-}
+} */
 
 @font-face {
 	font-family: "Lato";
@@ -22,7 +22,7 @@
 	font-display: swap;
 }
 
-@font-face {
+/* @font-face {
 	font-family: "Lato";
 	src: local("Lato Black"), local("Lato-Black"),
 		url("inc/fonts/Lato-Black.woff2") format("woff2"),
@@ -30,7 +30,7 @@
 	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
-}
+} */
 
 @font-face {
 	font-family: "Lato";
@@ -42,7 +42,7 @@
 	font-display: swap;
 }
 
-@font-face {
+/* @font-face {
 	font-family: "Lato Hairline";
 	src: local("Lato-Hairline"),
 		url("inc/fonts/Lato-Hairline.woff2") format("woff2"),
@@ -50,4 +50,4 @@
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
-}
+} */

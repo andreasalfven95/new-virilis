@@ -32,13 +32,13 @@
 			</button>
 		</div>
 	</div>
-	<nav id="primary-nav" class="fixed h-fullscreenSmallNavbar lg:h-auto bg-light lg:bg-transparent text-right lg:text-left left-0 right-0 transform transition-all duration-300 translate-x-full lg:translate-x-0 lg:static lg:min-h-0 text-xl lg:text-base">
+	<nav id="primary-nav" class="fixed h-fullscreenSmallNavbar overflow-y-scroll lg:overflow-visible lg:h-auto bg-light lg:bg-transparent text-right lg:text-left left-0 right-0 transform transition-all duration-300 translate-x-full lg:translate-x-0 lg:static lg:min-h-0 text-xl lg:text-base">
 		<?php
 		wp_nav_menu(
 			array(
 				'container_id'    => 'primary-menu',
-				'container_class' => 'px-4 py-8 h-full lg:p-0 lg:block',
-				'menu_class'      => 'h-full flex flex-col justify-center lg:items-center lg:flex-row gap-8',
+				'container_class' => 'h-full flex flex-col justify-center lg:block',
+				'menu_class'      => 'lg:h-full max-h-full flex flex-col lg:items-center lg:flex-row gap-8 px-4 pt-4 lg:p-0',
 				'theme_location'  => 'virilis-header-menu',
 				'li_class'        => 'text-dark sm:min-w-max',
 				'fallback_cb'     => false,
