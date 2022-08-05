@@ -10,25 +10,20 @@
 
 ?>
 
-<header id="masthead" class="site-header fixed px-4 min-w-full transition-all duration-300 top-0 z-50 bg-light lg:bg-opacity-80 lg:backdrop-blur lg:flex lg:gap-6 lg:justify-between lg:items-center lg:drop-shadow-lg shadow-light" role="banner">
+<header id="masthead" class="site-header fixed px-4 min-w-full transition-all duration-300 top-0 z-50 bg-light lg:bg-opacity-80 lg:backdrop-blur lg:flex lg:gap-6 lg:justify-between lg:items-center shadow-md shadow-black/10" role="banner">
 	<div class="flex gap-6 justify-between items-center h-full
 	">
-		<div id="logo-container" class="flex items-center h-full py-4">
-			<?php if (has_custom_logo()) { ?>
+		<?php if (has_custom_logo()) { ?>
+			<div id="logo-container" class="flex items-center h-full py-4">
 				<?php the_custom_logo(); ?>
-			<?php } else { ?>
-				<div class="text-lg uppercase">
-					<a href="<?php echo get_bloginfo('url'); ?>" class="font-extrabold text-lg uppercase">
-						<?php echo get_bloginfo('name'); ?>
-					</a>
-				</div>
-
-				<p class="text-sm font-light text-gray-600">
-					<?php echo get_bloginfo('description'); ?>
-				</p>
-
-			<?php } ?>
-		</div>
+			</div>
+		<?php } else { ?>
+			<div id="logo-container" class="flex items-center justify-center h-full py-4">
+				<a href="<?php echo get_bloginfo('url'); ?>" class="custom-logo flex items-center justify-center font-bold text-2xl uppercase py-4">
+					<?php echo get_bloginfo('name'); ?>
+				</a>
+			</div>
+		<?php } ?>
 		<div class="lg:hidden">
 			<button aria-label="Toggle navigation" id="primary-menu-toggle">
 				<div id="hamburger-wrapper">
@@ -45,7 +40,7 @@
 				'container_class' => 'px-4 py-8 h-full lg:p-0 lg:block',
 				'menu_class'      => 'h-full flex flex-col justify-center lg:items-center lg:flex-row gap-8',
 				'theme_location'  => 'virilis-header-menu',
-				'li_class'        => 'text min-w-max',
+				'li_class'        => 'text-dark sm:min-w-max',
 				'fallback_cb'     => false,
 			)
 		);

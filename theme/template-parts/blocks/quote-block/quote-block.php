@@ -30,23 +30,21 @@ $author = get_field('author') ?: 'Author name';
 $role = get_field('role') ?: 'Author role';
 $image = get_field('image') ?: 295;
 $background_color = get_field('background_color');
-$text_color = get_field('text_color');
 
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> prose-figcaption:m-0 prose-img:m-0">
     <figure>
         <blockquote class="quote-block-blockquote">
+            <div class="flex items-center flex-wrap gap-4">
+                <?php if ($image) echo wp_get_attachment_image($image, 'thumbnail', '', ["class" => "rounded-full w-20 h-20 border-2 border-gray-300"]); ?>
+                <figcaption class="quote-block-author flex flex-col font-bold text-lg not-italic"><?php echo $author; ?><cite class="quote-block-role not-italic text-primary text-base"><?php echo $role; ?></cite></figcaption>
+            </div>
             <p class="quote-block-text"><?php echo $text; ?></p>
         </blockquote>
-        <figcaption class="quote-block-author"><?php echo $author; ?>, <cite class="quote-block-role"><?php echo $role; ?></cite></figcaption>
-        <div class="quote-block-image">
-            <?php echo wp_get_attachment_image($image, 'full'); ?>
-        </div>
     </figure>
     <style type="text/css">
         #<?php echo $id; ?> {
-            background: <?php echo $background_color; ?>;
-            color: <?php echo $text_color; ?>;
+            background: <?php echo $background_color; ?> !important;
         }
     </style>
 </div>

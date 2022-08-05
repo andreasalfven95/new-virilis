@@ -52,22 +52,30 @@ if ($is_preview) {
                 $team_position = get_sub_field('team_position');
             ?>
                 <div class="team-member mt-8 flex flex-col items-center">
-                    <?php if ($team_image) : ?>
-                        <div class="team_image">
-                            <?php echo wp_get_attachment_image($team_image['id'], 'thumbnail', "", ["class" => "rounded-full w-[150px] h-[150px]"]); ?>
-                        </div>
-                    <?php endif; ?>
+                    <div class="team_image mb-2 md:mb-4 cursor-default">
+                        <?php if ($team_image) : ?>
+                            <?php echo wp_get_attachment_image($team_image['id'], 'thumbnail', "", ["class" => "rounded-full w-[150px] h-[150px] border-2 border-gray-300"]); ?>
+                        <?php else : ?>
+                            <div aria-hidden="true" class="bg-primary rounded-full w-[150px] h-[150px] border-2 border-gray-300 flex items-center justify-center">
+                                <?php if ($team_name) : ?>
+                                    <span class="font-bold text-light text-2xl text-center">
+                                        <?php echo $team_name; ?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                     <?php if ($team_name) : ?>
-                        <div class="team_name mt-4">
+                        <div class="team_name">
                             <span class="font-bold text-primary text-lg">
-                                <?php the_sub_field("team_name"); ?>
+                                <?php echo $team_name; ?>
                             </span>
                         </div>
                     <?php endif; ?>
                     <?php if ($team_position) : ?>
                         <div class="team_position">
                             <span>
-                                <?php the_sub_field("team_position"); ?>
+                                <?php echo $team_position; ?>
                             </span>
                         </div>
                     <?php endif; ?>

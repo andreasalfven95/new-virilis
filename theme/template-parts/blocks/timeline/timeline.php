@@ -54,7 +54,7 @@ if ($is_preview) {
                 $timeline_year = get_sub_field('timeline_year');
                 $timeline_description = get_sub_field('timeline_description');
             ?>
-                <div class="timeline-item flex space-x-8 md:space-x-0 justify-start md:odd:flex-row-reverse md:even:self-end md:max-w-[50%] w-full group">
+                <div class="timeline-item flex space-x-4 sm:space-x-8 md:space-x-0 justify-start md:odd:flex-row-reverse md:even:self-end md:max-w-[50%] w-full group">
                     <div class="md:translate-x-14 md:group-even:-translate-x-14 relative cursor-default">
                         <div aria-hidden="true" class="-z-10 group-last:hidden absolute bg-primary w-1 top-14 md:top-24 left-0 right-0 mx-auto h-full"></div>
                         <div class="bg-primary h-16 w-16 md:h-28 md:w-28 rounded-full overflow-hidden flex items-center justify-center text-light font-black text-xl md:text-3xl border-4 border-primary">

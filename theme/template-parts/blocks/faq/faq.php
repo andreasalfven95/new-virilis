@@ -32,7 +32,7 @@ if (!empty($block['align'])) {
                 <?php endif; ?>
                 <?php if (have_rows('faq_section')) : ?>
                     <?php while (have_rows('faq_section')) : the_row(); ?>
-                        <details class="accordion-item bg-light overflow-hidden border rounded-md border-gray-300 group">
+                        <details class="accordion-item bg-light overflow-hidden border rounded-md border-gray-300 group mb-2">
                             <summary class="accordion-question flex mb-0 cursor-pointer items-center justify-between bg-gray-200 py-4 px-5 text-base font-bold text-dark after:transition-transform open: after:content-['\2335'] group-open:after:-rotate-180">
                                 <?php the_sub_field("faq_question"); ?>
                             </summary>

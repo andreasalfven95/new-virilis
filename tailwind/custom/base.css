@@ -11,8 +11,10 @@
  * `theme.json` file and is applied both to the frontend and in the block
  * editor.
 */
+
+/* BREAK WORDS FOR REALLY SMALL SCREENS */
 body {
-	@apply bg-background font-sans text-black;
+	@apply break-words bg-background font-sans text-black sm:break-normal;
 }
 
 main {

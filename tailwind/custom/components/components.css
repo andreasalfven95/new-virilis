@@ -152,11 +152,11 @@ article > *:not(.entry-content),
 		}
 	} */
 
-	ol {
+	/* ol {
 		li {
 			@apply list-inside list-decimal;
 		}
-	}
+	} */
 }
 
 /* BUTTON */
@@ -202,10 +202,10 @@ article > *:not(.entry-content),
 /* HEADER */
 #primary-menu {
 	.menu-item:not(.sub-menu .menu-item) {
-		@apply py-4 font-bold;
+		@apply font-bold lg:py-4;
 	}
 	.menu-item a {
-		@apply lg:link-underline py-4;
+		@apply lg:link-underline lg:py-4;
 	}
 	/* .menu-item a:not(.lang-item a) {
 		@apply lg:link-underline font-bold;
@@ -228,11 +228,11 @@ article > *:not(.entry-content),
 	}
 
 	.sub-menu {
-		@apply absolute top-12 left-0 block lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
+		@apply block lg:absolute lg:top-12 lg:left-0 lg:hidden lg:rounded-lg lg:border lg:border-dark lg:bg-background;
 	}
 
 	.sub-menu a {
-		@apply mt-2 block min-w-[150px] bg-none text-base font-normal transition-transform duration-300 lg:mt-0 lg:p-4;
+		@apply mt-2 block bg-none text-base font-normal transition-transform duration-300 sm:min-w-[150px] lg:mt-0 lg:p-4;
 	}
 	.sub-menu a:hover {
 		@apply lg:translate-x-2 lg:underline;
